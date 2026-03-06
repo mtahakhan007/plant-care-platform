@@ -1,0 +1,51 @@
+{
+  "info": {
+    "name": "Plant Care - User Service",
+    "description": "API calls for user-service (create user, get all, get by id)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"john@example.com\",\n  \"name\": \"John Doe\",\n  \"mobileNumber\": \"+1234567890\"\n}"
+        },
+        "url": "{{baseUrl}}/api/users",
+        "description": "Creates a new user. Returns 201 with the created user (including id)."
+      }
+    },
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/users",
+        "description": "Returns a list of all users."
+      }
+    },
+    {
+      "name": "Get User by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/users/1",
+        "description": "Returns a single user by id. Change the id in the URL (e.g. /api/users/2)."
+      }
+    }
+  ]
+}
