@@ -1,5 +1,6 @@
 package com.plantcare.user_service.dto;
 
+import com.plantcare.user_service.entity.Role;
 import lombok.*;
 
 @Getter
@@ -13,4 +14,5 @@ public class UserResponse {
     private String email;
     private String name;
     private String mobileNumber;
+    private Role role;
 }

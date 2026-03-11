@@ -6,6 +6,7 @@ import com.plantcare.user_service.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,14 @@ public class UserController {
     }
 
     @GetMapping
-    public List<UserResponse> getAll() {
-        return userService.getAll();
+    public List<UserResponse> getAll( @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int pageSize) {
+
+        return userService.getAll(page, pageSize);
+    }
+
+    @GetMapping("/getmyprofile")
+    public UserResponse getMyProfile(Authentication authentication){
+        String email = authentication.getName();
+        return userService.getByEmail(email);
     }
 }
